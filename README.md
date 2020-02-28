@@ -10,14 +10,26 @@ for JavaScript.
 
 ## Installation
 
-```ruby
-npm add base24
+```shell
+$ npm add base24
 ```
 
 
 ## Usage
 
 ```javascript
+
+const Base24 = require('base24')
+
+// Encode
+let bytes = new Uint8Array([0x88, 0x55, 0x33, 0x11]);
+
+let str = Base24.encode24(bytes);
+
+str == "5YEATXA" // true
+
+let bytes = Base24.decode24(str);
+
 ```
 
 ## License
