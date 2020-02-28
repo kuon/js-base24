@@ -1,4 +1,6 @@
-
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kuon/js-base24/CI)
+![npm](https://img.shields.io/npm/v/base24)
+![NPM](https://img.shields.io/npm/l/base24)
 
 
 # Base24
