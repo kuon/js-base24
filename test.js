@@ -1,5 +1,6 @@
 const test = require('ava');
-const Base24 = require('./index.js')
+const Base24 = require('./index.js');
+const crypto = require('crypto');
 
 let values = [
     "00000000", "ZZZZZZZ",
@@ -52,8 +53,30 @@ let values = [
     "80000000", "53PP634"
 ]
 
-test('test', t => {
-  let bytes = new Uint8Array([0x88, 0x55, 0x33, 0x11]);
-  t.is(Base24.encode24(bytes), "5YEATXA");
+test('hard coded values', t => {
+    for (let i = 0; i < values.length; i += 2) {
+        let hex = values[i];
+        let b24 = values[i + 1];
+        let bytes = hex.match(/.{2}/g).reduce((acc, n) => {
+            acc.push(parseInt(n, 16));
+            return acc;
+        }, []);
+        bytes = new Uint8Array(bytes);
+        let encoded = Base24.encode24(bytes);
+        t.is(encoded, b24.toUpperCase());
+        let decoded = Base24.decode24(b24);
+        t.deepEqual(decoded, bytes);
+    }
 });
 
+test('random values', t => {
+    t.timeout(1000 * 600);
+    for (let size = 1; size < 5; size++) {
+        for (let i = 0; i < 100000; i++) {
+            let bytes = new Uint8Array(crypto.randomBytes(4 * size));
+            let b24 = Base24.encode24(bytes);
+            let decoded = Base24.decode24(b24);
+            t.deepEqual(decoded, bytes);
+        }
+    }
+});
