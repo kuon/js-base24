@@ -1,0 +1,22 @@
+{
+  "name": "base24",
+  "version": "1.0.0",
+  "description": "A base24 encoder and decoder for JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuon/js-base24.git"
+  },
+  "author": "Nicolas Goy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuon/js-base24/issues"
+  },
+  "homepage": "https://github.com/kuon/js-base24#readme",
+  "devDependencies": {
+    "ava": "^3.4.0"
+  }
+}
