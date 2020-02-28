@@ -91,8 +91,3 @@ exports.decode24 = function(data) {
 }
 
 
-  let bytes = new Uint8Array([0x88, 0x55, 0x33, 0x11]);
-console.log(exports.encode24(bytes));
-console.log(exports.decode24("5YEATXA"));
-
-
