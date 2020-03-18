@@ -1,6 +1,6 @@
 {
     "name": "base24",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A base24 encoder and decoder for JS",
     "main": "index.js",
     "scripts": {
