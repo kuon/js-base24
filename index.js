@@ -1,22 +1,13 @@
 const ALPHABET = "ZAC2B3EF4GH5TK67P8RS9WXY";
 const ASIZE = ALPHABET.length
 
-const ENCODE_MAP = function() {
-    return ALPHABET.split("").reduce((acc, char) => {
-        let [map, idx] = acc;
-        map[idx] = char;
-        return [map, idx + 1];
-    }, [{}, 0])[0];
-}();
+const ENCODE_MAP = {...ALPHABET}
 
-const DECODE_MAP = function() {
-    return ALPHABET.split("").reduce((acc, char) => {
-        let [map, idx] = acc;
-        map[char] = idx;
-        map[char.toLowerCase()] = idx;
-        return [map, idx + 1];
-    }, [{}, 0])[0];
-}();
+const DECODE_MAP = [...ALPHABET].reduce((acc, char) => {
+    let [map, idx] = acc;
+    map[char.toLowerCase()] = map[char] = idx;
+    return [map, idx + 1];
+}, [{}, 0])[0];
 
 
 exports.encode24 = function(data) {
